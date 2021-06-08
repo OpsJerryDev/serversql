@@ -2,7 +2,7 @@ version: '3'
 services:
   webserver:
     container_name: webserver
-    build: ./DockerWeb
+    build: ./DockerPipe
     ports:
       - "8080:80"
     volumes:
@@ -10,7 +10,7 @@ services:
     - ./git-server/repos:/git-server/repos
   sqlserver:
     container_name: sqlserver
-    build: ./DockerSQL
+    build: ./DockerDev
     environment:
         - ACCEPT_EULA=Y
         - SA_PASSWORD=Password1!
