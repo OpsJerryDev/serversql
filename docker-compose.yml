@@ -1,0 +1,19 @@
+version: '3'
+services:
+  webserver:
+    container_name: webserver
+    build: ./DockerPipe
+    ports:
+      - "8080:80"
+    volumes:
+    - ./git-server/keys:/git-server/keys
+    - ./git-server/repos:/git-server/repos
+  sqlserver:
+    container_name: sqlserver
+    build: ./DockerDev
+    environment:
+        - ACCEPT_EULA=Y
+        - SA_PASSWORD=Password1!
+        - MSSQL_PID=Express
+    ports:
+       - "1433:1433"
